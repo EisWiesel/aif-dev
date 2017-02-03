@@ -107,36 +107,35 @@ select_language() {
 	"8" nl_NL          (nl_NL)" \
 	"9" hu_HU          (hu_HU)" 2>${ANSWER}
 	
-	source /aif-dev-master/english.trans
 
 	case $(cat ${ANSWER}) in
-        "1") 
-             CURR_LOCALE="en_US.UTF-8"
+        "1") source /aif-dev-master/english.trans
+	CURR_LOCALE="en_US.UTF-8"
              ;;
-        "2") 
-             CURR_LOCALE="es_ES.UTF-8"
+        "2") source /aif-dev-master/english.trans
+	CURR_LOCALE="es_ES.UTF-8"
              ;; 
-        "3") 
-	     CURR_LOCALE="pt_BR.UTF-8"
+        "3") source /aif-dev-master/english.trans
+	CURR_LOCALE="pt_BR.UTF-8"
 	     ;;
-        "4") 
-	     CURR_LOCALE="pt_PT.UTF-8"
+        "4") source /aif-dev-master/english.trans
+	CURR_LOCALE="pt_PT.UTF-8"
 	     ;;	
-	"5") 
-             CURR_LOCALE="fr_FR.UTF-8"
+	"5") source /aif-dev-master/english.trans
+	CURR_LOCALE="fr_FR.UTF-8"
              ;;	 
-        "6") 
-             CURR_LOCALE="ru_RU.UTF-8"
+        "6") source /aif-dev-master/english.trans
+	CURR_LOCALE="ru_RU.UTF-8"
              FONT="LatKaCyrHeb-14.psfu"
              ;;
-        "7") 
-             CURR_LOCALE="it_IT.UTF-8"
+        "7") source /aif-dev-master/english.trans
+	CURR_LOCALE="it_IT.UTF-8"
              ;;
-        "8") 
-             CURR_LOCALE="nl_NL.UTF-8"
+        "8") source /aif-dev-master/english.trans
+	CURR_LOCALE="nl_NL.UTF-8"
              ;;
-        "9") 
-             CURR_LOCALE="hu_HU.UTF-8"
+        "9") source /aif-dev-master/english.trans
+	CURR_LOCALE="hu_HU.UTF-8"
              FONT="lat2-16.psfu"
              ;;
           *) exit 0
