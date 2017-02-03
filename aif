@@ -23,7 +23,7 @@ PACKAGES="/tmp/.pkgs"			# Packages to install
 MOUNT_OPTS="/tmp/.mnt_opts" 	# Filesystem Mount options
 
 # Save retyping
-VERSION="Architect Installation Framework 2.3.1"
+VERSION="BlackArchitect based on Architect Installation Framework 2.3.1"
 
 # Installation
 DM_INST=""							# Which DMs have been installed?
@@ -93,62 +93,52 @@ FILE=""                     		# File(s) to be reviewed
 ##																	##
 ######################################################################
 
-# Add locale on-the-fly and sets source translation file for installer
+# Add locale on-the-fly and sets english language file for installer
 select_language() {
     
-    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select Language " --menu "\nLanguage / sprache / taal / språk / lingua / idioma / nyelv / língua" 0 0 9 \
- 	"1" $"English            (en_**)" \
-	"2" $"Español            (es_ES)" \
-	"3" $"Português [Brasil] (pt_BR)" \
-	"4" $"Português          (pt_PT)" \
-	"5" $"Français           (fr_FR)" \
-	"6" $"Russkiy            (ru_RU)" \
-	"7" $"Italiano           (it_IT)" \
-	"8" $"Nederlands         (nl_NL)" \
-	"9" $"Magyar             (hu_HU)" 2>${ANSWER}
+    dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title " Select locale " --menu "\nlocale" 0 0 9 \
+ 	"1" en_**          (en_**)" \
+	"2" es_ES          (es_ES)" \
+	"3" pt_BR [Brasil] (pt_BR)" \
+	"4" pt_PT          (pt_PT)" \
+	"5" fr_FR          (fr_FR)" \
+	"6" ru_RU          (ru_RU)" \
+	"7" it_IT          (it_IT)" \
+	"8" nl_NL          (nl_NL)" \
+	"9" hu_HU          (hu_HU)" 2>${ANSWER}
+	
+	source /aif-dev-master/english.trans
 
 	case $(cat ${ANSWER}) in
-        "1") source /aif-dev-master/english.trans
+        "1") 
              CURR_LOCALE="en_US.UTF-8"
              ;;
-        "2") source /aif-dev-master/spanish.trans
+        "2") 
              CURR_LOCALE="es_ES.UTF-8"
              ;; 
-        "3") source /aif-dev-master/portuguese_brasil.trans
-			 CURR_LOCALE="pt_BR.UTF-8"
-			 ;;
-        "4") source /aif-dev-master/portuguese.trans
-			 CURR_LOCALE="pt_PT.UTF-8"
-			 ;;		
-		"5") source /aif-dev-master/french.trans
+        "3") 
+	     CURR_LOCALE="pt_BR.UTF-8"
+	     ;;
+        "4") 
+	     CURR_LOCALE="pt_PT.UTF-8"
+	     ;;	
+	"5") 
              CURR_LOCALE="fr_FR.UTF-8"
              ;;	 
-        "6") source /aif-dev-master/russian.trans
+        "6") 
              CURR_LOCALE="ru_RU.UTF-8"
              FONT="LatKaCyrHeb-14.psfu"
              ;;
-        "7") source /aif-dev-master/italian.trans
+        "7") 
              CURR_LOCALE="it_IT.UTF-8"
              ;;
-        "8") source /aif-dev-master/dutch.trans
+        "8") 
              CURR_LOCALE="nl_NL.UTF-8"
              ;;
-        "9") source /aif-dev-master/hungarian.trans
+        "9") 
              CURR_LOCALE="hu_HU.UTF-8"
              FONT="lat2-16.psfu"
              ;;
-#        "4") source /aif-dev-master/turkish.trans
-#             CURR_LOCALE="tr_TR.UTF-8"
-#             FONT="LatKaCyrHeb-14.psfu"
-#             ;;      
-#        "6") source /aif-dev-master/greek.trans
-#             CURR_LOCALE="el_GR.UTF-8"
-#             FONT="iso07u-16.psfu"       
-#             ;;
-#       "12") source /aif-dev-master/polish.trans
-#             CURR_LOCALE="pl_PL.UTF-8"
-#             FONT="latarcyrheb-sun16"
-#             ;;
           *) exit 0
              ;;
     esac
